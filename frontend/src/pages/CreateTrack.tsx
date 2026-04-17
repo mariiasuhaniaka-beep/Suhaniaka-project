@@ -26,6 +26,7 @@ function CreateTrack() {
       <button type="submit">Add</button>
     </form>
   );
+  <form style={{ maxWidth: '400px', margin: '0 auto' }}></form>
 }
 
 export default CreateTrack;

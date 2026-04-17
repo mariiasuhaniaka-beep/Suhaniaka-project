@@ -1,78 +1,177 @@
+/* ОСНОВНІ СТИЛІ СТОРІНКИ */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  margin: 0;
-  padding: 0;
+  margin: 0; /* прибирає стандартні відступи */
+  font-family: 'Segoe UI', sans-serif; /* шрифт сторінки */
+  background: radial-gradient(circle at top, #1a1a2e, #0d0d0d); /* темний градієнтний фон */
+  color: #fff; /* білий текст */
 }
 
+/* декоративне світіння у верхньому лівому куті */
+body::before {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #c084fc, transparent);
+  top: -100px;
+  left: -100px;
+  opacity: 0.2;
+}
+
+/* декоративне світіння у нижньому правому куті */
+body::after {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #f472b6, transparent);
+  bottom: -100px;
+  right: -100px;
+  opacity: 0.2;
+}
+
+/* НАВІГАЦІЯ */
 nav {
-  background: #222;
-  padding: 15px;
+  background: #1a1a1a; /* темний фон навбару */
+  padding: 15px; /* внутрішні відступи */
+  border-bottom: 1px solid #333; /* тонка нижня лінія */
 }
 
 nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
+  margin-right: 20px; /* відступ між посиланнями */
+  text-decoration: none; /* прибирає підкреслення */
+  color: #c084fc; /* фіолетовий колір тексту */
+  font-weight: bold; /* жирний текст */
+  transition: 0.3s; /* плавна анімація */
 }
 
 nav a:hover {
-  color: #00bcd4;
+  color: #f472b6; /* рожевий при наведенні */
 }
 
-h2 {
-  text-align: center;
-  margin-top: 20px;
+/* ЗАГОЛОВКИ */
+h1, h2 {
+  color: #e879f9; /* рожево-фіолетовий колір */
 }
 
+/* СПИСКИ */
 ul {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 0;
+  list-style: none; /* прибирає маркери списку */
+  padding: 0; /* прибирає внутрішні відступи */
 }
 
+/* КАРТОЧКИ (LI) */
 li {
-  list-style: none;
-  background: white;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #1a1a1a; /* темний фон */
+  padding: 15px; /* внутрішній відступ */
+  margin-bottom: 10px; /* відступ між елементами */
+  border-radius: 10px; /* заокруглені кути */
+  border: 1px solid #2a2a2a; /* рамка */
+  transition: 0.3s; /* плавна анімація */
 }
 
+li:hover {
+  transform: scale(1.02); /* трохи збільшується */
+  border-color: #c084fc; /* фіолетова рамка при наведенні */
+}
+
+/* КНОПКИ */
 button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px 12px; /* внутрішні відступи */
+  border: none; /* без рамки */
+  border-radius: 6px; /* заокруглення */
+  background: linear-gradient(45deg, #c084fc, #f472b6); /* градієнт */
+  color: white; /* колір тексту */
+  cursor: pointer; /* курсор-рука */
+  transition: 0.3s; /* плавність */
 }
 
 button:hover {
-  background: darkred;
+  opacity: 0.8; /* зменшення прозорості */
 }
 
-form {
-  max-width: 400px;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* ПОЛЯ ВВОДУ */
 input {
+  display: block; /* кожне поле з нового рядка */
+  margin-bottom: 10px; /* відступ знизу */
+  padding: 8px; /* внутрішні відступи */
+  border-radius: 6px; /* заокруглення */
+  border: 1px solid #333; /* рамка */
+  background: #1a1a1a; /* темний фон */
+  color: white; /* білий текст */
+}
+
+/* КАРТОЧКА ТРЕКУ */
+.track-card {
+  display: flex; /* вирівнювання елементів в ряд */
+  justify-content: space-between; /* рознесення по краях */
+  align-items: center; /* вертикальне вирівнювання */
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  transition: 0.3s;
+}
+
+.track-card:hover {
+  transform: translateY(-3px); /* підняття картки */
+  border-color: #c084fc;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.3); /* світіння */
+}
+
+/* кнопки (додатковий стиль поверх базового) */
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #c084fc, #f472b6);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 10px #c084fc, 0 0 20px #f472b6; /* неонове світіння */
+}
+
+/* контейнер сторінки */
+.container {
+  max-width: 600px; /* обмеження ширини */
+  margin: 0 auto; /* центрування */
+}
+
+/* іконки в кнопках */
+button svg {
+  vertical-align: middle;
+}
+
+/* іконки в картках */
+.track-card svg {
+  color: #c084fc;
+}
+
+/* пошуковий блок */
+.search-box {
+  display: flex; /* рядкове розташування */
+  gap: 10px; /* відстань між елементами */
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  flex: 1; /* займає весь доступний простір */
+}
+
+.search-box button {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
 
-form button {
-  background: green;
-}
-
-form button:hover {
-  background: darkgreen;
+/* головний заголовок */
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #c084fc, #f472b6); /* градієнт тексту */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* робить текст прозорим для градієнта */
 }
