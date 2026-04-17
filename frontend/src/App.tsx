@@ -7,11 +7,10 @@ function App() {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link> | 
-        <Link to="/tracks">Tracks</Link> | 
-        <Link to="/create">Add Track</Link>
+        <Link to="/">Головна</Link> | 
+        <Link to="/tracks">Каталог</Link> | 
+        <Link to="/create">Додати трек</Link>
       </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tracks" element={<Tracks />} />
