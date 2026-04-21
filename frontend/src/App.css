@@ -1,7 +1,10 @@
+/* ОСНОВА */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1a1a2e, #0d0d0d);
+
+  background: radial-gradient(circle at top, #2a2a4a, #12121c);
+
   color: #fff;
   min-height: 100vh;
 }
@@ -12,9 +15,9 @@ body::after {
   position: fixed;
   width: 500px;
   height: 500px;
-  opacity: 0.2;
-  pointer-events: none;   
-  z-index: -1;            
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
 }
 
 body::before {
@@ -29,17 +32,19 @@ body::after {
   right: -100px;
 }
 
+/* НАВІГАЦІЯ */
 nav {
-  background: #1a1a1a;
-  padding: 15px;
+  background: rgba(20, 20, 30, 0.9);
+  padding: 16px 32px;
   border-bottom: 1px solid #333;
+  backdrop-filter: blur(10px);
 }
 
 nav a {
-  margin-right: 20px;
+  margin-right: 24px;
   text-decoration: none;
   color: #c084fc;
-  font-weight: bold;
+  font-weight: 600;
   transition: 0.3s;
 }
 
@@ -47,95 +52,124 @@ nav a:hover {
   color: #f472b6;
 }
 
-h1, h2 {
-  color: #e879f9;
-  text-align: center;
-}
-
+/* КОНТЕЙНЕР */
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  z-index: 1; /* 🔥 гарантує що контент зверху */
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ТИПОГРАФІКА */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f0abfc;
 }
 
-li {
-  background: #1a1a1a;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  border: 1px solid #2a2a2a;
-  transition: 0.3s;
+h2 {
+  text-align: center;
+  margin: 40px 0 20px;
+  color: #e879f9;
 }
 
-li:hover {
-  transform: scale(1.02);
-  border-color: #c084fc;
-}
-
-.track-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #2a2a2a;
-  transition: 0.3s;
-}
-
-.track-card:hover {
-  transform: translateY(-3px);
-  border-color: #c084fc;
-  box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
-}
-
-input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background: #1a1a1a;
-  color: white;
-  width: 100%;
-}
-
-button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(45deg, #c084fc, #f472b6);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  box-shadow: 0 0 10px #c084fc, 0 0 20px #f472b6;
-  opacity: 0.9;
-}
-
+/* ПОШУК */
 .search-box {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
 .search-box input {
   flex: 1;
 }
 
+/* СПИСКИ */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+/* КАРТКИ */
+.track-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px;
+  margin-bottom: 12px;
+
+  border-radius: 14px;
+  border: 1px solid #2a2a3a;
+
+  background: rgba(30, 30, 40, 0.85);
+
+  transition: 0.25s;
+}
+
+.track-card:hover {
+  transform: translateY(-3px);
+  border-color: #c084fc;
+  box-shadow: 0 0 15px rgba(192, 132, 252, 0.25);
+}
+
+/* ІНПУТИ */
+input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px 14px;
+  margin-bottom: 16px;
+
+  border-radius: 10px;
+  border: 1px solid #444;
+
+  background: rgba(40, 40, 55, 0.9);
+  color: #fff;
+
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+input:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.4);
+}
+
+/* ФОРМА */
+form {
+  margin-top: 20px;
+}
+
+/* КНОПКИ */
+button {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(45deg, #c084fc, #f472b6);
+  color: white;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px #c084fc, 0 0 20px #f472b6;
+}
+
+/* ІКОНКИ */
 button svg {
   vertical-align: middle;
 }
+
 .track-card svg {
-  color: #c084fc;
+  color: #75357c;
 }

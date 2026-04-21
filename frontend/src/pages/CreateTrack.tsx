@@ -2,50 +2,96 @@ import { useState } from 'react';
 import { api } from '../api/api';
 
 function CreateTrack() {
-  const [title, setTitle] = useState('');// state для назви треку 
-  const [artist, setArtist] = useState('');// state для виконавця 
-  const [year, setYear] = useState(''); // state для року
+  // state для назви треку
+  const [title, setTitle] = useState('');
 
-  const handleSubmit = async (e: any) => {// обробка відправки форми
-    e.preventDefault(); 
-    // зупиняє стандартну поведінку форми (перезавантаження сторінки)
+  // state для виконавця
+  const [artist, setArtist] = useState('');
 
-    // відправляємо POST запит на бекенд
-    await api.post('/tracks', {
-      title, // назва треку з state
-      artist, // виконавець з state
-      year: Number(year), // перетворюємо рік у число, бо input завжди повертає string
-    });
+  // state для року
+  const [year, setYear] = useState('');
 
-    // повідомлення користувачу про успіх
-    alert('Track added!');
+  // state для помилок (валідація)
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    // ОЧИЩАЄМО ПОМИЛКУ ПЕРЕД ВАЛІДАЦІЄЮ
+    setError('');
+
+    // ВАЛІДАЦІЯ 
+    if (!title.trim()) {
+      setError('Введи назву треку');
+      return;
+    }
+
+    if (!artist.trim()) {
+      setError('Введи виконавця');
+      return;
+    }
+
+    if (!year.trim()) {
+      setError('Введи рік');
+      return;
+    }
+
+    if (isNaN(Number(year))) {
+      setError('Рік має бути числом');
+      return;
+    }
+
+    // ЗАПИТ НА БЕКЕНД
+    try {
+      await api.post('/tracks', {
+        title,
+        artist,
+        year: Number(year),
+      });
+
+      alert('Track added!');
+
+      // очищення форми після успіху
+      setTitle('');
+      setArtist('');
+      setYear('');
+    } catch {
+      setError('Помилка при створенні треку');
+    }
   };
 
   return (
-    // форма створення треку
     <form onSubmit={handleSubmit}>
 
-      {/* поле вводу назви */}
+      {/* ПОМИЛКА */}
+      {error && (
+        <p style={{ color: '#f472b6', marginBottom: '10px' }}>
+          {error}
+        </p>
+      )}
+
+      {/* поле назви */}
       <input
         placeholder="Title"
+        value={title}
         onChange={e => setTitle(e.target.value)}
-        // кожна зміна записується у state title
       />
 
-      {/* поле вводу виконавця */}
+      {/* поле виконавця */}
       <input
         placeholder="Artist"
+        value={artist}
         onChange={e => setArtist(e.target.value)}
-        // записуємо значення в artist state
       />
 
-      {/* поле вводу року */}
+      {/* поле року */}
       <input
         placeholder="Year"
+        value={year}
         onChange={e => setYear(e.target.value)}
-        // записуємо рік як string у state
       />
-      {/* кнопка відправки форми */}
+
+      {/* кнопка */}
       <button type="submit">Add</button>
     </form>
   );
